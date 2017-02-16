@@ -8,6 +8,8 @@ class Webmoney extends \yii\base\Component
 {
     public $baseUrl = 'https://merchant.webmoney.ru/lmi/payment.asp';
 
+    public $secretKey;
+    public $checksumMethod = 'SHA256';
     public $purse;
     public $resultUrl;
     public $successUrl;
