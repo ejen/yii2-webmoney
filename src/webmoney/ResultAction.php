@@ -12,6 +12,8 @@ class ResultAction extends \yii\base\Action
 
     public function run()
     {
+        if (!isset($_POST['LMI_HASH2'])) return;
+
         $hash = $this->calculateHash($_POST);
         if ($_POST['LMI_HASH2'] != $hash) return;
         

@@ -20,6 +20,8 @@ class Payment extends \yii\base\Model
     public $failUrl;
     public $failMethod;
 
+    public $customFields = [];
+
     public function rules()
     {
         // @todo Check purse
@@ -28,7 +30,7 @@ class Payment extends \yii\base\Model
 
     public function getHiddenForm()
     {
-        $html = Html::beginForm($this->component->baseUrl);
+        $html = Html::beginForm($this->component->baseUrl, 'post', ['csrf' => false]);
 
         foreach($this->fields as $name => $value)
         {
@@ -78,6 +80,11 @@ class Payment extends \yii\base\Model
             {
                 $fields[$lmi] = $this->component->{$attribute};
             }
+        }
+
+        foreach($this->customFields as $field)
+        {
+            $fields[$field['name']] = $field['value'];
         }
 
         return $fields;
