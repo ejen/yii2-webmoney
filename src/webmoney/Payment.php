@@ -2,6 +2,7 @@
 
 namespace ejen\payment\webmoney;
 
+use Yii;
 use yii\helpers\Html;
 
 class Payment extends \yii\base\Model
@@ -28,18 +29,18 @@ class Payment extends \yii\base\Model
         return [];
     }
 
-    public function getHiddenForm()
+    public function renderHiddenForm()
     {
-        $html = Html::beginForm($this->component->baseUrl, 'post', ['csrf' => false]);
+        echo Html::beginForm($this->component->baseUrl, 'post', ['csrf' => false]);
 
         foreach($this->fields as $name => $value)
         {
-            $html.= Html::hiddenInput($name, $value);
+            echo Html::hiddenInput($name, $value);
         }
 
-        $html.= Html::submitButton();
-        $html.= Html::endForm();
-        return $html;
+        echo Html::endForm();
+
+        echo Html::tag('script', "document.forms[0].submit();");
     }
 
     public function getFields()
