@@ -31,7 +31,7 @@ class Payment extends \yii\base\Model
 
     public function renderHiddenForm()
     {
-        echo Html::beginForm($this->component->baseUrl, 'post', ['csrf' => false]);
+        echo Html::beginForm($this->component->baseUrl, 'post', ['csrf' => false, 'name' => 'wm_hidden_form']);
 
         foreach($this->fields as $name => $value)
         {
@@ -40,7 +40,7 @@ class Payment extends \yii\base\Model
 
         echo Html::endForm();
 
-        echo Html::tag('script', "document.forms[0].submit();");
+        echo Html::tag('script', "document.forms.wm_hidden_form.submit();");
     }
 
     public function getFields()

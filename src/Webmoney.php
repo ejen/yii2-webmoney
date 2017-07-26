@@ -10,6 +10,14 @@ class Webmoney extends \yii\base\Component
 
     public $secretKey;
     public $checksumMethod = 'SHA256';
+    /**
+     * @var array
+     */
+    public $purses;
+    /**
+     * для обратной совместимости
+     * @var string
+     */
     public $purse;
     public $resultUrl;
     public $successUrl;
