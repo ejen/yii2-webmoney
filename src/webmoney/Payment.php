@@ -15,6 +15,7 @@ class Payment extends \yii\base\Model
     public $email;
 
     public $purse;
+    public $secretKey;
     public $resultUrl;
     public $successUrl;
     public $successMethod;
